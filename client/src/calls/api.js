@@ -1,29 +1,30 @@
 import axios from 'axios';
 
+let url = 'fakeso.brianmoses.tech';
 
 export function incrementViewCount(qid) {
     
     axios.post(
-        'http://localhost:8000/incrementViewCount',
+        `http://${url}/incrementViewCount`,
         qid,
         {withCredentials: true}
     )
 };
 
 export async function getQuestions() {
-    return (await axios.get('http://localhost:8000/getQuestions')).data.reverse().map(question => {return {...question, current_page: 1, current_comment_page: 1}});
+    return (await axios.get(`http://${url}/getQuestions`)).data.reverse().map(question => {return {...question, current_page: 1, current_comment_page: 1}});
 };
 
 export async function getAnswers() {
-    return (await axios.get('http://localhost:8000/getAnswers')).data.reverse().map(answer => {return {...answer, current_comment_page: 1}});
+    return (await axios.get(`http://${url}/getAnswers`)).data.reverse().map(answer => {return {...answer, current_comment_page: 1}});
 };
 
 export async function getTags() {
-    return (await axios.get('http://localhost:8000/getTags')).data;
+    return (await axios.get(`http://${url}/getTags`)).data;
 };
 
 export async function getUser(id) {
-    const user = (await axios.post('http://localhost:8000/getUser', {_id: id}, {withCredentials: true})).data;
+    const user = (await axios.post(`http://${url}/getUser`, {_id: id}, {withCredentials: true})).data;
     if (user !== '') {
         user.email = '';
         user.password = '';
@@ -33,7 +34,7 @@ export async function getUser(id) {
 
 export async function postAnswer(answer, q_id, email) {
     const datetime = (await axios.post(
-        'http://localhost:8000/postAnswer',
+        `http://${url}/postAnswer`,
         { 
             answer,
             q_id,
@@ -46,7 +47,7 @@ export async function postAnswer(answer, q_id, email) {
 
 export async function postQuestion(question, tags_already_added, tags_to_be_added, _id) {
     const datetime = (await axios.post(
-        'http://localhost:8000/postQuestion',
+        `http://${url}/postQuestion`,
         {
             question,
             tags_already_added,
@@ -60,7 +61,7 @@ export async function postQuestion(question, tags_already_added, tags_to_be_adde
 
 export async function isUnique(email) {
     const isUnique = (await axios.post(
-        'http://localhost:8000/isUnique',
+        `http://${url}/isUnique`,
         {
             email: email
         },
@@ -71,7 +72,7 @@ export async function isUnique(email) {
 
 export async function postUser(user) {
     await axios.post(
-        'http://localhost:8000/postUser',
+        `http://${url}/postUser`,
         user,
         {withCredentials: true}
     )
@@ -79,7 +80,7 @@ export async function postUser(user) {
 
 export async function verifyUser(email, password) {
     const user = (await axios.post(
-        'http://localhost:8000/verifyUser',
+        `http://${url}/verifyUser`,
         {
             email: email,
             password: password
@@ -92,7 +93,7 @@ export async function verifyUser(email, password) {
 
 export async function pushQuestionUpdate(question, newname, tagid) {
     await axios.post(
-        'http://localhost:8000/pushQuestionUpdate',
+        `http://localhost:8000/pushQuestionUpdate`,
         {
             question,
             newname,
@@ -104,7 +105,7 @@ export async function pushQuestionUpdate(question, newname, tagid) {
 
 export async function pushAnswerUpdate(id, newtext) {
     await axios.post(
-        'http://localhost:8000/pushAnswerUpdate',
+        `http://${url}/pushAnswerUpdate`,
         {
             id,
             newtext
@@ -115,7 +116,7 @@ export async function pushAnswerUpdate(id, newtext) {
 
 export async function pushTagUpdate(tag) {
     await axios.post(
-        'http://localhost:8000/pushTagUpdate',
+        `http://localhost:8000/pushTagUpdate`,
         tag,
         {withCredentials: true}
     );
@@ -123,7 +124,7 @@ export async function pushTagUpdate(tag) {
 
 export async function pushDeleteQuestion(qid, tid, uid) {
     await axios.post(
-        'http://localhost:8000/pushDeleteQuestion',
+        `http://${url}/pushDeleteQuestion`,
         {
             qid: qid,
             tid: tid,
@@ -135,7 +136,7 @@ export async function pushDeleteQuestion(qid, tid, uid) {
 
 export async function pushDeleteAnswer(aid, uid) {
     await axios.post(
-        'http://localhost:8000/pushDeleteAnswer',
+        `http://${url}/pushDeleteAnswer`,
         {
             aid: aid,
             uid: uid
@@ -146,7 +147,7 @@ export async function pushDeleteAnswer(aid, uid) {
 
 export async function pushDeleteTag(tid, uid) {
     await axios.post(
-        'http://localhost:8000/pushDeleteTag',
+        `http://${url}/pushDeleteTag`,
         {
             tid: tid,
             uid: uid
@@ -157,7 +158,7 @@ export async function pushDeleteTag(tid, uid) {
 
 export async function pushRemoveTagFromQuestion(qid, tid, uid) {
     await axios.post(
-        'http://localhost:8000/pushRemoveTagFromQuestion',
+        `http://${url}/pushRemoveTagFromQuestion`,
         {
             qid: qid,
             tid: tid,
@@ -169,7 +170,7 @@ export async function pushRemoveTagFromQuestion(qid, tid, uid) {
 
 export async function pushComment(text, id, user) {
     await axios.post(
-        'http://localhost:8000/pushComment',
+        `http://${url}pushComment`,
         {
             text: text,
             id: id,
@@ -181,7 +182,7 @@ export async function pushComment(text, id, user) {
 
 export async function voteOnContent(id, upvote, uid) {
     await axios.post(
-        'http://localhost:8000/vote',
+        `http://${url}/vote`,
         {
             id: id,
             upvote: upvote,
@@ -192,7 +193,7 @@ export async function voteOnContent(id, upvote, uid) {
 }
 
 export async function pushLogout() {
-    await axios.get('http://localhost:8000/logout');
+    await axios.get(`http://${url}/logout`);
 }
 
 // import axios from 'axios';
