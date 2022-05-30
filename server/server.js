@@ -57,6 +57,8 @@ const verifyIdentiy = (req, res, next) => {
 app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(express.static("/var/www/fake_stackoverflow/client"));
+app.use(express.static("/var/www/fake_stackoverflow/client/build"));
 app.use(verifyDBConnection);
 app.use(
     session({
@@ -73,9 +75,14 @@ app.use(verifyIdentiy);
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
-const port = 8000;
+const port = 4000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`);
+});
+
+
+app.get('/', (req, res) => {
+	res.sendFile("/var/www/fake_stackoverflow/client/build/index.html");
 });
 
 app.post('/postQuestion', async (req, res) => {
