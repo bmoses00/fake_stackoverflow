@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose');
-const cors = require('cors');
+// const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const bcrypt = require('bcrypt');
@@ -54,7 +54,7 @@ const verifyIdentiy = (req, res, next) => {
         
 }
 
-app.use(cors({origin: 'http://localhost:3000', credentials: true}));
+// app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("/var/www/fake_stackoverflow/client"));
