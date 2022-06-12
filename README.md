@@ -4,4 +4,4 @@ This site is a clone of the popular forum Stack Overflow. Users may create an ac
 
 ## Demo
 
-Navigate to (https://fakeso.brianmoses.tech)[https://fakeso.brianmoses.tech] for a live demo
+Navigate to (https://fakeso.brianmoses.tech)[https://fakeso.brianmoses.tech] to view a live demo.
