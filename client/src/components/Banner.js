@@ -17,8 +17,8 @@ function Banner({model, setCurrentPage, search, logout}) {
 		<Navbar fixed="top" bg="dark" variant="dark" expand="lg">
 			<Container>
 				<Navbar.Brand href="#home">FakeStackOverflow</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Nav className="me-auto">
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Nav.Link onClick={() => setCurrentPage(model.Pages.Display_Questions)}>Questions</Nav.Link>
 					<Nav.Link onClick={() => setCurrentPage(model.Pages.Tags)}>Tags</Nav.Link>
 					{
