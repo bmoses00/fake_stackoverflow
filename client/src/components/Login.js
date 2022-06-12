@@ -12,7 +12,6 @@ function Login({model, setCurrentPage, loginUser}) {
     <Container>
     <Row className="mb-5">
       <Col>
-        <Errors model={model}></Errors>
       </Col>
     </Row>
     <Row className="mb-5"></Row>
@@ -21,6 +20,8 @@ function Login({model, setCurrentPage, loginUser}) {
       <Col md={4}></Col>
       <Col>
         <Card border='success' bg='light' className="text-center">
+          <Errors model={model}></Errors>
+
 
           <Form id="answer_form" onSubmit={(e) => {e.preventDefault(); loginUser() }}>
             <div className="form_input"> Email</div>
@@ -41,24 +42,6 @@ function Login({model, setCurrentPage, loginUser}) {
       <Col md={4}></Col>
     </Row>
   </Container>
-    // <>
-    //   <Errors model={model}></Errors>
-      // <form id="answer_form" onSubmit={(e) => {e.preventDefault(); loginUser() }}>
-
-      // <div className="form_input"> Email</div>
-      // <br></br>
-      // <input id="email" className="input"></input>
-      // <br></br><br></br>  
-
-      // <div className="form_input"> Password </div>
-      // <br></br>
-      // <input type="password" id="password" className="input"></input>
-      // <br></br><br></br>  
-
-      // <input className="btn" type="submit" value="Login"></input>
-      // </form><br></br>
-      // <button className="btn" onClick={() => setCurrentPage(model.Pages.Welcome)}>Back to Welcome</button><br></br><br></br>
-    // </>
   )
 }
 
